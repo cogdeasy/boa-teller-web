@@ -41,7 +41,7 @@
           <td class="boa-mono small">{{t.postedAt | nyTime}}</td>
           <td class="boa-mono small">{{t.businessDate}}</td>
           <td>{{t.description}}</td>
-          <td><span class="boa-channel boa-channel-{{t.channel | lowercase}}">{{t.channel}}</span></td>
+          <td><span class="boa-channel boa-channel-{{t.channel | lowercase}}">{{t.channelLabel || t.channel}}</span></td>
           <td class="text-right boa-mono" ng-class="t.type === 'CREDIT' ? 'text-success' : ''">{{t.amount | money}}</td>
           <td class="text-right boa-mono">{{t.runningBalance | money}}</td>
           <td class="small">{{t.status}}</td>
