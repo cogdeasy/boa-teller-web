@@ -25,6 +25,9 @@ var TRANSFER_LIMITS = {
 };
 
 function checkTransferLimits(to, amount) {
+  if (to.productCode.indexOf('GL-') === 0) {
+    return null; // internal GL accounts are exempt, as in core-banking
+  }
   var limit = TRANSFER_LIMITS[to.productCode];
   if (amount > limit.perTransfer) {
     return { status: 422, code: 'LIMIT_EXCEEDED',
