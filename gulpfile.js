@@ -25,7 +25,8 @@ var app = {
   js: ['src/app/**/*.module.js', 'src/app/**/*.js', '.tmp/templates.js'],
   templates: 'src/app/**/*.html',
   css: 'src/styles/**/*.css',
-  index: 'src/index.html'
+  index: 'src/index.html',
+  assets: 'src/assets/**/*'
 };
 
 function clean() {
@@ -58,16 +59,21 @@ function appCss() {
   return gulp.src(app.css).pipe(concat('app.css')).pipe(gulp.dest('dist/css'));
 }
 
+function assets() {
+  return gulp.src(app.assets).pipe(gulp.dest('dist/assets'));
+}
+
 function index() {
   return gulp.src(app.index).pipe(gulp.dest('dist'));
 }
 
-var build = gulp.series(clean, gulp.parallel(vendorJs, vendorCss, fonts, appCss, index, gulp.series(templates, appJs)));
+var build = gulp.series(clean, gulp.parallel(vendorJs, vendorCss, fonts, assets, appCss, index, gulp.series(templates, appJs)));
 
 function watch() {
   gulp.watch(['src/app/**/*'], gulp.series(templates, appJs));
   gulp.watch(app.css, appCss);
   gulp.watch(app.index, index);
+  gulp.watch(app.assets, assets);
 }
 
 exports.clean = clean;

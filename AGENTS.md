@@ -22,6 +22,7 @@ Login: `teller01` / `Teller#2019`. Seed CIFs `100000001`, `100000002`.
   interceptor, filters, directives, `APP_CONFIG` constants, `contract.js` (payload typedefs).
 * `src/app/app.module.js`, `app.routes.js` — root module, ui-router states, auth guard.
 * `src/styles/teller.css` — theme on top of Bootstrap 3.
+* `src/assets/` — static assets (brand logo), copied to `dist/assets/` by the build.
 * `mock-server/` — `server.js` (static + stub/proxy), `api.js` (routes), `store.js` (state), `seed.js` (data).
 * `test/unit/*.spec.js` — Jasmine specs. Tests load feature modules (e.g. `boaTeller.transfers`), never the
   root `boaTeller` module, so no templates or routes are needed.
