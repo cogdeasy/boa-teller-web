@@ -1,0 +1,84 @@
+<div class="row">
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Internal book transfer</h3>
+      </div>
+      <div class="panel-body">
+        <ol class="nb-steps">
+          <li ng-class="{active: step === 'entry'}">1. Details</li>
+          <li ng-class="{active: step === 'review'}">2. Review</li>
+          <li ng-class="{active: step === 'done'}">3. Receipt</li>
+        </ol>
+        <div nb-alert="error"></div>
+
+        <form class="form-horizontal" ng-if="step === 'entry'" ng-submit="review()" novalidate>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">From account</label>
+            <div class="col-sm-6">
+              <input class="form-control nb-mono" ng-model="transfer.fromAccount" ng-blur="lookupFrom()" maxlength="12" placeholder="12-digit account #">
+              <p class="help-block" ng-if="fromDetails">{{fromDetails.nickname}} &middot; available <strong>{{fromDetails.availableBalance | money}}</strong></p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">To account</label>
+            <div class="col-sm-6"><input class="form-control nb-mono" ng-model="transfer.toAccount" maxlength="12" placeholder="12-digit account #"></div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Amount</label>
+            <div class="col-sm-4"><div class="input-group"><span class="input-group-addon">$</span>
+              <input class="form-control nb-mono" ng-model="transfer.amount" placeholder="0.00"></div></div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Memo</label>
+            <div class="col-sm-6"><input class="form-control" ng-model="transfer.memo" maxlength="40" placeholder="Optional"></div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+              <button class="btn btn-primary" type="submit">Review transfer <span class="glyphicon glyphicon-chevron-right"></span></button>
+            </div>
+          </div>
+        </form>
+
+        <div ng-if="step === 'review'">
+          <table class="table nb-review">
+            <tr><th>From</th><td class="nb-mono">{{transfer.fromAccount | maskAccount}}</td><td>{{fromDetails.nickname}}</td></tr>
+            <tr><th>To</th><td class="nb-mono">{{transfer.toAccount | maskAccount}}</td><td>{{toDetails.nickname}} <span class="text-muted">(CIF {{toDetails.cif || 'GL'}})</span></td></tr>
+            <tr><th>Amount</th><td class="nb-mono" colspan="2"><strong>{{transfer.amount | money}}</strong></td></tr>
+            <tr><th>Memo</th><td colspan="2">{{transfer.memo || '—'}}</td></tr>
+          </table>
+          <p class="text-muted small">Confirm the details with the customer before posting. Book transfers post immediately and cannot be recalled from the teller console.</p>
+          <button class="btn btn-default" ng-click="edit()" ng-disabled="posting">Edit</button>
+          <button class="btn btn-success" ng-click="submit()" ng-disabled="posting">
+            <span class="glyphicon glyphicon-ok"></span> <span ng-hide="posting">Post transfer</span><span ng-show="posting">Posting&hellip;</span>
+          </button>
+        </div>
+
+        <div ng-if="step === 'done'" class="nb-receipt">
+          <h4><span class="glyphicon glyphicon-ok-circle text-success"></span> Transfer {{result.status}}</h4>
+          <dl class="dl-horizontal">
+            <dt>Reference</dt><dd class="nb-mono">{{result.transferId}}</dd>
+            <dt>From</dt><dd class="nb-mono">{{transfer.fromAccount}}</dd>
+            <dt>To</dt><dd class="nb-mono">{{transfer.toAccount}}</dd>
+            <dt>Amount</dt><dd class="nb-mono">{{transfer.amount | money}}</dd>
+            <dt>Posted</dt><dd>{{result.postedAt | nyTime}}</dd>
+            <dt>Business date</dt><dd>{{result.businessDate}}</dd>
+          </dl>
+          <button class="btn btn-default" onclick="window.print()"><span class="glyphicon glyphicon-print"></span> Print receipt</button>
+          <button class="btn btn-primary" ng-click="another()">New transfer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h3 class="panel-title">Limits &amp; controls</h3></div>
+      <ul class="list-group small">
+        <li class="list-group-item">Single transfer limit <strong class="pull-right">$10,000.00</strong></li>
+        <li class="list-group-item">Funds checked against <strong class="pull-right">available balance</strong></li>
+        <li class="list-group-item">Over $3,000.00 <strong class="pull-right">two forms of ID</strong></li>
+        <li class="list-group-item">Duplicate protection <strong class="pull-right">idempotency key</strong></li>
+      </ul>
+    </div>
+  </div>
+</div>

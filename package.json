@@ -1,0 +1,47 @@
+{
+  "name": "nb-teller-web",
+  "version": "2.4.1",
+  "description": "Northbridge Federal Bank branch teller console",
+  "private": true,
+  "license": "UNLICENSED",
+  "author": "Northbridge Branch Technology <branch-tech@northbridge.example>",
+  "main": "mock-server/server.js",
+  "engines": {
+    "node": ">=8"
+  },
+  "scripts": {
+    "clean": "gulp clean",
+    "build": "gulp build",
+    "watch": "gulp watch",
+    "start": "gulp build && node mock-server/server.js",
+    "start:core-banking": "gulp build && CORE_BANKING_URL=http://localhost:8080 node mock-server/server.js",
+    "serve": "node mock-server/server.js",
+    "lint": "eslint src/app mock-server test gulpfile.js karma.conf.js",
+    "test": "karma start karma.conf.js --single-run"
+  },
+  "dependencies": {
+    "angular": "1.5.8",
+    "angular-sanitize": "1.5.8",
+    "angular-ui-router": "0.3.2",
+    "bootstrap": "3.3.7",
+    "jquery": "2.2.4",
+    "lodash": "4.17.4",
+    "moment": "2.18.1"
+  },
+  "devDependencies": {
+    "angular-mocks": "1.5.8",
+    "body-parser": "1.18.2",
+    "del": "3.0.0",
+    "eslint": "4.19.1",
+    "express": "4.16.2",
+    "gulp": "4.0.2",
+    "gulp-angular-templatecache": "2.2.0",
+    "gulp-concat": "2.6.1",
+    "http-proxy-middleware": "0.17.4",
+    "jasmine-core": "2.8.0",
+    "karma": "1.7.1",
+    "karma-chrome-launcher": "2.2.0",
+    "karma-jasmine": "1.1.2",
+    "morgan": "1.9.0"
+  }
+}

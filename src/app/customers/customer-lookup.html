@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-md-7">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h3 class="panel-title">Customer lookup</h3></div>
+      <div class="panel-body">
+        <form class="form-inline" ng-submit="lookup()">
+          <div class="form-group">
+            <label for="cif">CIF</label>
+            <input id="cif" class="form-control input-lg nb-mono" ng-model="form.cif" maxlength="9" placeholder="100000001" autofocus>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg" ng-disabled="busy">
+            <span class="glyphicon glyphicon-search"></span> Look up
+          </button>
+        </form>
+        <p class="help-block">Enter the 9-digit Customer Information File number from the customer's debit card or ID verification.</p>
+        <div nb-alert="error"></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-5">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h3 class="panel-title">Recently viewed</h3></div>
+      <div class="list-group" ng-if="recent.length">
+        <a href class="list-group-item" ng-repeat="c in recent" ng-click="lookup(c.cif)">
+          <span class="badge nb-mono">{{c.cif}}</span> {{c.name}}
+        </a>
+      </div>
+      <div class="panel-body text-muted" ng-if="!recent.length">No customers viewed on this workstation yet.</div>
+    </div>
+  </div>
+</div>

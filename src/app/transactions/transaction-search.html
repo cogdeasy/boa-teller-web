@@ -1,0 +1,40 @@
+<div class="panel panel-default">
+  <div class="panel-heading"><h3 class="panel-title">Transaction search</h3></div>
+  <div class="panel-body">
+    <form class="form-inline" ng-submit="search()">
+      <div class="form-group">
+        <input class="form-control" style="width: 320px" ng-model="query.q" placeholder="Description contains, e.g. coffee" autofocus>
+      </div>
+      <div class="form-group">
+        <input class="form-control nb-mono" style="width: 210px" ng-model="query.accountNumber" maxlength="12" placeholder="Account # (optional)">
+      </div>
+      <button class="btn btn-primary" type="submit" ng-disabled="searching">
+        <span class="glyphicon glyphicon-search"></span> Search
+      </button>
+      <span class="text-muted small" ng-if="searching">Searching all posted transactions&hellip; this can take a few seconds.</span>
+    </form>
+    <div nb-alert="error"></div>
+  </div>
+  <div ng-if="results">
+    <div class="panel-body nb-result-summary small text-muted">
+      {{results.length}} matches for &ldquo;{{term}}&rdquo; in {{elapsed}} ms
+      <span ng-repeat="(acct, n) in byAccount"> &middot; <span class="nb-mono">{{acct | maskAccount}}</span>: {{n}}</span>
+    </div>
+    <table class="table table-condensed table-hover nb-table">
+      <thead>
+        <tr><th>Posted</th><th>Account</th><th>Description</th><th>Channel</th><th class="text-right">Amount</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="t in results track by t.id">
+          <td class="nb-mono small">{{t.postedAt | nyTime}}</td>
+          <td><a class="nb-mono" ui-sref="console.account({accountNumber: t.accountNumber})">{{t.accountNumber | maskAccount}}</a></td>
+          <td ng-bind-html="t.description | highlight:term"></td>
+          <td><span class="nb-channel nb-channel-{{t.channel | lowercase}}">{{t.channel}}</span></td>
+          <td class="text-right nb-mono" ng-class="t.type === 'CREDIT' ? 'text-success' : ''">{{t.amount | money}}</td>
+          <td class="small">{{t.status}}</td>
+        </tr>
+        <tr ng-if="!results.length"><td colspan="6" class="text-center text-muted">No matching transactions.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>

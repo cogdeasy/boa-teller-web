@@ -1,0 +1,45 @@
+<nav class="navbar navbar-inverse navbar-static-top nb-navbar">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" ui-sref="console.lookup">
+        <span class="nb-mark">NB</span> Northbridge Federal Bank <small>Teller Console</small>
+      </a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li ng-class="{active: $state.includes('console.lookup') || $state.includes('console.customer')}">
+        <a ui-sref="console.lookup"><span class="glyphicon glyphicon-user"></span> Customers</a>
+      </li>
+      <li ng-class="{active: $state.includes('console.search')}">
+        <a ui-sref="console.search"><span class="glyphicon glyphicon-search"></span> Transaction search</a>
+      </li>
+      <li ng-class="{active: $state.includes('console.transfer')}">
+        <a ui-sref="console.transfer"><span class="glyphicon glyphicon-transfer"></span> Book transfer</a>
+      </li>
+    </ul>
+    <form class="navbar-form navbar-left" ng-submit="openAccount()">
+      <div class="input-group input-group-sm">
+        <input type="text" class="form-control" placeholder="Go to account #" maxlength="12"
+               ng-model="quick.accountNumber" style="width: 130px">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-arrow-right"></span></button>
+        </span>
+      </div>
+    </form>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="navbar-text nb-meta">Branch {{branch}} &middot; {{businessDate}}</li>
+      <li class="dropdown">
+        <a href class="dropdown-toggle" data-toggle="dropdown">
+          <span class="glyphicon glyphicon-lock"></span> {{session.username}} <span class="label label-info">{{session.role}}</span>
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href ng-click="signOut()"><span class="glyphicon glyphicon-log-out"></span> Sign out</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container-fluid nb-content" ui-view></div>
+<footer class="nb-footer">
+  Northbridge Federal Bank &middot; Branch Operations &middot; For internal use by authorised staff only. Activity is monitored.
+</footer>

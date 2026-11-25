@@ -1,0 +1,17 @@
+{
+  "root": true,
+  "extends": "eslint:recommended",
+  "env": { "browser": true, "node": true },
+  "parserOptions": { "ecmaVersion": 5 },
+  "globals": { "angular": false, "moment": false, "_": false, "$": false },
+  "rules": {
+    "no-console": "warn",
+    "eqeqeq": "error",
+    "curly": "error",
+    "quotes": ["error", "single", { "avoidEscape": true }],
+    "semi": ["error", "always"]
+  },
+  "overrides": [
+    { "files": ["test/**/*.js"], "env": { "jasmine": true }, "globals": { "inject": false, "module": false } }
+  ]
+}
