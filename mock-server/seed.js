@@ -75,6 +75,10 @@ function history(account, days, today) {
     var date = new Date(today.getTime() - d * 86400000);
     var dom = date.getUTCDate();
     if (account.productCode === 'DDA-CHK') {
+      if (d === 2) {
+        entries.push({ date: date, channel: 'ZELLE', type: 'DEBIT', amount: -4500,
+          description: 'ZELLE TO JORDAN MILLER CONF# ZL7Q2M' });
+      }
       if (dom === 1 || dom === 15) {
         entries.push({ date: date, channel: 'ACH', type: 'CREDIT', amount: cents(r, 2100, 2400),
           description: 'ACH DEPOSIT NORTHWIND LOGISTICS PAYROLL' });

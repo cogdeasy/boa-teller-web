@@ -29,7 +29,8 @@
  * @property {string} postedAt
  * @property {string} businessDate
  * @property {string} type          DEBIT, CREDIT
- * @property {string} channel       CARD, ACH, WIRE, P2P, BILLPAY, BRANCH, ATM, INTEREST, FEE, TRANSFER
+ * @property {string} channel       CARD, ACH, WIRE, P2P, BILLPAY, BRANCH, ATM, INTEREST, FEE, TRANSFER, ZELLE
+ * @property {string} channelLabel  display label for the channel
  * @property {string} amount
  * @property {string} runningBalance
  * @property {string} description
