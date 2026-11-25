@@ -123,8 +123,9 @@ router.get('/transactions/search', function (req, res) {
   var results = store.search(q, req.query.accountNumber, function (n) {
     return canView(req.user, store.getAccount(n));
   });
+  var view = results.map(store.txnView);
   // Free-text search is a full scan in core-banking; keep the stub similarly unhurried.
-  setTimeout(function () { res.json(results.map(store.txnView)); }, 400 + Math.floor(Math.random() * 600));
+  setTimeout(function () { res.json(view); }, 400 + Math.floor(Math.random() * 600));
 });
 
 router.post('/transfers', function (req, res) {
