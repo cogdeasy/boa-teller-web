@@ -86,7 +86,7 @@ The console is a pure client of core-banking `/api/v1` as defined in the platfor
 `mock-server/` implements the endpoints above in memory, seeded with the contract's local-profile
 users and accounts (`seed.js`) and ~120 days of deterministic transaction history per account. It
 enforces roles (CUSTOMER sees own accounts only, TELLER sees all, holds are TELLER-only), per-transfer
-limits by destination product (DDA-CHK 10,000.00, DDA-SAV 25,000.00; GL accounts exempt), available-balance NSF checks and idempotency keys. State resets on
+limits by destination product (DDA-CHK 10,000.00, DDA-SAV 25,000.00, CC-VISA 15,000.00; GL accounts exempt; a product without a limit is refused with `PRODUCT_LIMIT_NOT_CONFIGURED`), available-balance NSF checks and idempotency keys. State resets on
 restart.
 
 | user | password | role | CIF |

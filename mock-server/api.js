@@ -18,10 +18,10 @@ function error(res, status, code, message) {
 }
 
 // Per-transfer limits by destination product, in cents; mirrors core-banking's product_limit table.
-// Card payments (CC-VISA) were added to the seed data without a matching entry here.
 var TRANSFER_LIMITS = {
   'DDA-CHK': { perTransfer: 1000000 },
-  'DDA-SAV': { perTransfer: 2500000 }
+  'DDA-SAV': { perTransfer: 2500000 },
+  'CC-VISA': { perTransfer: 1500000 }
 };
 
 function checkTransferLimits(to, amount) {
@@ -29,6 +29,11 @@ function checkTransferLimits(to, amount) {
     return null; // internal GL accounts are exempt, as in core-banking
   }
   var limit = TRANSFER_LIMITS[to.productCode];
+  if (!limit) {
+    // fail closed, as core-banking does for a product without a product_limit row
+    return { status: 422, code: 'PRODUCT_LIMIT_NOT_CONFIGURED',
+      message: 'Transfers to product ' + to.productCode + ' are not enabled: no per-transfer limit is configured' };
+  }
   if (amount > limit.perTransfer) {
     return { status: 422, code: 'LIMIT_EXCEEDED',
       message: 'Amount exceeds the per-transfer limit of ' + store.money(limit.perTransfer) + ' for ' + to.productCode };

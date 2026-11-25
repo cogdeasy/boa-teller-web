@@ -17,7 +17,8 @@
     "start:core-banking": "gulp build && CORE_BANKING_URL=http://localhost:8080 node mock-server/server.js",
     "serve": "node mock-server/server.js",
     "lint": "eslint src/app mock-server test gulpfile.js karma.conf.js",
-    "test": "karma start karma.conf.js --single-run"
+    "test": "karma start karma.conf.js --single-run && npm run test:server",
+    "test:server": "node test/server/transfer-limits.test.js"
   },
   "dependencies": {
     "angular": "1.5.8",
