@@ -3,7 +3,6 @@
 var seed = require('./seed');
 
 var DAYS_OF_HISTORY = 120;
-var SINGLE_TRANSFER_LIMIT = 1000000; // 10,000.00
 var HOLD_REASONS = ['CHK-DEP-HOLD', 'LEGAL', 'FRAUD-REVIEW', 'OTHER'];
 
 function pad(n, w) {
@@ -194,7 +193,6 @@ reset();
 
 module.exports = {
   HOLD_REASONS: HOLD_REASONS,
-  SINGLE_TRANSFER_LIMIT: SINGLE_TRANSFER_LIMIT,
   reset: reset,
   money: money,
   parseMoney: parseMoney,

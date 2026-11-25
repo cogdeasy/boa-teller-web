@@ -100,6 +100,7 @@ restart.
 |---|---|---|---|
 | 104000123455 | 100000001 | DDA-CHK Advantage Checking | 4,812.33 (100.00 on hold) |
 | 104000123463 | 100000001 | DDA-SAV Advantage Savings | 22,150.00 |
+| 440000528719 | 100000001 | CC-VISA Customized Cash Rewards Visa | -1,284.56 (card balance owed) |
 | 211000048218 | 100000002 | DDA-CHK | 1,045.12 |
 | 211000048226 | 100000002 | DDA-SAV | 9,300.00 |
 | 307000555010 | – | GL-SUSP suspense GL | 0.00 |

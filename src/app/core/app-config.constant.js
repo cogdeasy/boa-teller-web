@@ -23,7 +23,7 @@
     ])
     .constant('TRANSFER_ERRORS', {
       NSF: 'The source account does not have sufficient available funds.',
-      LIMIT_EXCEEDED: 'The amount exceeds the single transfer limit. Refer to a branch manager.',
+      LIMIT_EXCEEDED: 'The amount exceeds the per-transfer limit for the destination account. Refer to a branch manager.',
       ACCOUNT_NOT_FOUND: 'One of the accounts could not be found. Check the account numbers.',
       DUPLICATE: 'This transfer has already been posted.'
     });
