@@ -17,6 +17,25 @@ function error(res, status, code, message) {
   return res.status(status).json({ code: code, message: message });
 }
 
+// Per-transfer limits by destination product, in cents; mirrors core-banking's product_limit table.
+// Card payments (CC-VISA) were added to the seed data without a matching entry here.
+var TRANSFER_LIMITS = {
+  'DDA-CHK': { perTransfer: 1000000 },
+  'DDA-SAV': { perTransfer: 2500000 }
+};
+
+function checkTransferLimits(to, amount) {
+  if (to.productCode.indexOf('GL-') === 0) {
+    return null; // internal GL accounts are exempt, as in core-banking
+  }
+  var limit = TRANSFER_LIMITS[to.productCode];
+  if (amount > limit.perTransfer) {
+    return { status: 422, code: 'LIMIT_EXCEEDED',
+      message: 'Amount exceeds the per-transfer limit of ' + store.money(limit.perTransfer) + ' for ' + to.productCode };
+  }
+  return null;
+}
+
 function authenticate(req, res, next) {
   var header = req.headers.authorization || '';
   if (header.indexOf('Basic ') !== 0) {
@@ -147,8 +166,9 @@ router.post('/transfers', function (req, res) {
   if (store.isDuplicate(body.idempotencyKey)) {
     return error(res, 409, 'DUPLICATE', 'A transfer with this idempotency key has already been posted');
   }
-  if (amount > store.SINGLE_TRANSFER_LIMIT) {
-    return error(res, 422, 'LIMIT_EXCEEDED', 'Amount exceeds the single transfer limit of 10000.00');
+  var limitError = checkTransferLimits(to, amount);
+  if (limitError) {
+    return error(res, limitError.status, limitError.code, limitError.message);
   }
   if (from.productCode !== 'GL-SUSP' && amount > from.ledger - from.hold) {
     return error(res, 422, 'NSF', 'Insufficient available funds');

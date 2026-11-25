@@ -15,7 +15,7 @@
  * @property {string} accountNumber 12-digit DDA number (branch, serial, Luhn check digit)
  * @property {string} maskedNumber  ********3455
  * @property {string} cif
- * @property {string} productCode   DDA-CHK, DDA-SAV, GL-SUSP
+ * @property {string} productCode   DDA-CHK, DDA-SAV, CC-VISA, GL-SUSP
  * @property {string} nickname
  * @property {string} status        OPEN, CLOSED, FROZEN
  * @property {string} ledgerBalance
