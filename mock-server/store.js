@@ -4,7 +4,7 @@ var seed = require('./seed');
 
 var DAYS_OF_HISTORY = 120;
 // Display labels for the teller's Activity (Transactions) tab, keyed by channel code.
-// Zelle transfers were added to the seed data without a matching entry here.
+// A channel code without an entry here is shown as its code (see channelLabel).
 var CHANNEL_LABELS = {
   CARD: { label: 'Card' },
   ACH: { label: 'ACH' },
@@ -15,7 +15,8 @@ var CHANNEL_LABELS = {
   ATM: { label: 'ATM' },
   INTEREST: { label: 'Interest' },
   FEE: { label: 'Fee' },
-  TRANSFER: { label: 'Transfer' }
+  TRANSFER: { label: 'Transfer' },
+  ZELLE: { label: 'Zelle' }
 };
 var HOLD_REASONS = ['CHK-DEP-HOLD', 'LEGAL', 'FRAUD-REVIEW', 'OTHER'];
 
@@ -129,10 +130,15 @@ function accountView(a) {
   };
 }
 
+function channelLabel(channel) {
+  var entry = CHANNEL_LABELS[channel];
+  return entry ? entry.label : channel;
+}
+
 function txnView(t) {
   return {
     id: t.id, accountNumber: t.accountNumber, postedAt: t.postedAt, businessDate: t.businessDate,
-    type: t.type, channel: t.channel, channelLabel: CHANNEL_LABELS[t.channel].label,
+    type: t.type, channel: t.channel, channelLabel: channelLabel(t.channel),
     amount: money(t.amount), runningBalance: money(t.runningBalance),
     description: t.description, status: t.status
   };
@@ -213,6 +219,7 @@ module.exports = {
   parseMoney: parseMoney,
   businessDate: businessDate,
   accountView: accountView,
+  channelLabel: channelLabel,
   txnView: txnView,
   getCustomer: getCustomer,
   getAccount: getAccount,
