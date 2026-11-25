@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('nbTeller.core')
+  angular.module('boaTeller.core')
     .factory('ApiError', ApiError);
 
   function ApiError() {

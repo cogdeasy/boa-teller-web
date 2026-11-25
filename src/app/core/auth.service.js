@@ -1,12 +1,12 @@
 (function () {
   'use strict';
 
-  angular.module('nbTeller.core')
+  angular.module('boaTeller.core')
     .factory('AuthService', AuthService);
 
   AuthService.$inject = ['$http', '$q', '$window', 'APP_CONFIG'];
   function AuthService($http, $q, $window, APP_CONFIG) {
-    var STORAGE_KEY = 'nb.teller.session';
+    var STORAGE_KEY = 'boa.teller.session';
     var session = read();
 
     return {

@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('nbTeller.customers')
+  angular.module('boaTeller.customers')
     .controller('CustomerDetailController', CustomerDetailController);
 
   CustomerDetailController.$inject = ['$scope', '$stateParams', '$q', 'CoreBankingService', 'ApiError'];

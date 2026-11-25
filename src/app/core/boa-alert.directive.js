@@ -2,20 +2,20 @@
   'use strict';
 
   /**
-   * <div nb-alert="vm.error" type="danger"></div>
+   * <div boa-alert="vm.error" type="danger"></div>
    * Renders a dismissible Bootstrap alert for an API error ({code, message}) or a plain string.
    */
-  angular.module('nbTeller.core')
-    .directive('nbAlert', nbAlert);
+  angular.module('boaTeller.core')
+    .directive('boaAlert', boaAlert);
 
-  function nbAlert() {
+  function boaAlert() {
     return {
       restrict: 'A',
-      scope: { nbAlert: '=', type: '@' },
+      scope: { boaAlert: '=', type: '@' },
       link: function (scope, element) {
         var $el = $(element);
 
-        scope.$watch('nbAlert', function (value) {
+        scope.$watch('boaAlert', function (value) {
           if (!value) {
             $el.empty().hide();
             return;
@@ -31,7 +31,7 @@
 
         $el.on('click', '.close', function () {
           scope.$apply(function () {
-            scope.nbAlert = null;
+            scope.boaAlert = null;
           });
         });
       }

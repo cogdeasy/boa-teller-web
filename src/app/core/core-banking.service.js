@@ -5,7 +5,7 @@
    * Thin client for the core-banking /api/v1 endpoints the teller console uses.
    * Every method resolves with the response body (see core/contract.js for shapes).
    */
-  angular.module('nbTeller.core')
+  angular.module('boaTeller.core')
     .factory('CoreBankingService', CoreBankingService);
 
   CoreBankingService.$inject = ['$http', 'APP_CONFIG'];

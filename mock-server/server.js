@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, '..', 'dist')));
 
 app.listen(PORT, function () {
   /* eslint-disable no-console */
-  console.log('nb-teller-web listening on http://localhost:' + PORT);
+  console.log('boa-teller-web listening on http://localhost:' + PORT);
   console.log(CORE_BANKING_URL ? '  /api/v1 -> ' + CORE_BANKING_URL : '  /api/v1 -> local core-banking stub');
   /* eslint-enable no-console */
 });

@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('nbTeller.login')
+  angular.module('boaTeller.login')
     .controller('LoginController', LoginController);
 
   LoginController.$inject = ['$scope', '$state', 'AuthService', 'APP_CONFIG'];

@@ -46,7 +46,7 @@ function fonts() {
 
 function templates() {
   return gulp.src(app.templates)
-    .pipe(templateCache('templates.js', { module: 'nbTeller.templates', standalone: true, root: 'app/' }))
+    .pipe(templateCache('templates.js', { module: 'boaTeller.templates', standalone: true, root: 'app/' }))
     .pipe(gulp.dest('.tmp'));
 }
 

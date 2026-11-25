@@ -5,29 +5,29 @@
         <h3 class="panel-title">Internal book transfer</h3>
       </div>
       <div class="panel-body">
-        <ol class="nb-steps">
+        <ol class="boa-steps">
           <li ng-class="{active: step === 'entry'}">1. Details</li>
           <li ng-class="{active: step === 'review'}">2. Review</li>
           <li ng-class="{active: step === 'done'}">3. Receipt</li>
         </ol>
-        <div nb-alert="error"></div>
+        <div boa-alert="error"></div>
 
         <form class="form-horizontal" ng-if="step === 'entry'" ng-submit="review()" novalidate>
           <div class="form-group">
             <label class="col-sm-3 control-label">From account</label>
             <div class="col-sm-6">
-              <input class="form-control nb-mono" ng-model="transfer.fromAccount" ng-blur="lookupFrom()" maxlength="12" placeholder="12-digit account #">
+              <input class="form-control boa-mono" ng-model="transfer.fromAccount" ng-blur="lookupFrom()" maxlength="12" placeholder="12-digit account #">
               <p class="help-block" ng-if="fromDetails">{{fromDetails.nickname}} &middot; available <strong>{{fromDetails.availableBalance | money}}</strong></p>
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-3 control-label">To account</label>
-            <div class="col-sm-6"><input class="form-control nb-mono" ng-model="transfer.toAccount" maxlength="12" placeholder="12-digit account #"></div>
+            <div class="col-sm-6"><input class="form-control boa-mono" ng-model="transfer.toAccount" maxlength="12" placeholder="12-digit account #"></div>
           </div>
           <div class="form-group">
             <label class="col-sm-3 control-label">Amount</label>
             <div class="col-sm-4"><div class="input-group"><span class="input-group-addon">$</span>
-              <input class="form-control nb-mono" ng-model="transfer.amount" placeholder="0.00"></div></div>
+              <input class="form-control boa-mono" ng-model="transfer.amount" placeholder="0.00"></div></div>
           </div>
           <div class="form-group">
             <label class="col-sm-3 control-label">Memo</label>
@@ -41,10 +41,10 @@
         </form>
 
         <div ng-if="step === 'review'">
-          <table class="table nb-review">
-            <tr><th>From</th><td class="nb-mono">{{transfer.fromAccount | maskAccount}}</td><td>{{fromDetails.nickname}}</td></tr>
-            <tr><th>To</th><td class="nb-mono">{{transfer.toAccount | maskAccount}}</td><td>{{toDetails.nickname}} <span class="text-muted">(CIF {{toDetails.cif || 'GL'}})</span></td></tr>
-            <tr><th>Amount</th><td class="nb-mono" colspan="2"><strong>{{transfer.amount | money}}</strong></td></tr>
+          <table class="table boa-review">
+            <tr><th>From</th><td class="boa-mono">{{transfer.fromAccount | maskAccount}}</td><td>{{fromDetails.nickname}}</td></tr>
+            <tr><th>To</th><td class="boa-mono">{{transfer.toAccount | maskAccount}}</td><td>{{toDetails.nickname}} <span class="text-muted">(CIF {{toDetails.cif || 'GL'}})</span></td></tr>
+            <tr><th>Amount</th><td class="boa-mono" colspan="2"><strong>{{transfer.amount | money}}</strong></td></tr>
             <tr><th>Memo</th><td colspan="2">{{transfer.memo || '—'}}</td></tr>
           </table>
           <p class="text-muted small">Confirm the details with the customer before posting. Book transfers post immediately and cannot be recalled from the teller console.</p>
@@ -54,13 +54,13 @@
           </button>
         </div>
 
-        <div ng-if="step === 'done'" class="nb-receipt">
+        <div ng-if="step === 'done'" class="boa-receipt">
           <h4><span class="glyphicon glyphicon-ok-circle text-success"></span> Transfer {{result.status}}</h4>
           <dl class="dl-horizontal">
-            <dt>Reference</dt><dd class="nb-mono">{{result.transferId}}</dd>
-            <dt>From</dt><dd class="nb-mono">{{transfer.fromAccount}}</dd>
-            <dt>To</dt><dd class="nb-mono">{{transfer.toAccount}}</dd>
-            <dt>Amount</dt><dd class="nb-mono">{{transfer.amount | money}}</dd>
+            <dt>Reference</dt><dd class="boa-mono">{{result.transferId}}</dd>
+            <dt>From</dt><dd class="boa-mono">{{transfer.fromAccount}}</dd>
+            <dt>To</dt><dd class="boa-mono">{{transfer.toAccount}}</dd>
+            <dt>Amount</dt><dd class="boa-mono">{{transfer.amount | money}}</dd>
             <dt>Posted</dt><dd>{{result.postedAt | nyTime}}</dd>
             <dt>Business date</dt><dd>{{result.businessDate}}</dd>
           </dl>

@@ -3,7 +3,7 @@ describe('filters', function () {
 
   var $filter;
 
-  beforeEach(module('nbTeller.core'));
+  beforeEach(module('boaTeller.core'));
   beforeEach(inject(function (_$filter_) {
     $filter = _$filter_;
   }));

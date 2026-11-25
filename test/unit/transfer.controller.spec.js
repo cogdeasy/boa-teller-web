@@ -3,7 +3,7 @@ describe('TransferController', function () {
 
   var $scope, $httpBackend;
 
-  beforeEach(module('nbTeller.transfers'));
+  beforeEach(module('boaTeller.transfers'));
   beforeEach(inject(function ($controller, $rootScope, _$httpBackend_) {
     $httpBackend = _$httpBackend_;
     $scope = $rootScope.$new();

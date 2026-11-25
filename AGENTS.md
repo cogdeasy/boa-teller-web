@@ -1,4 +1,4 @@
-# AGENTS.md — nb-teller-web
+# AGENTS.md — boa-teller-web
 
 Branch teller console: AngularJS 1.5 SPA + Express dev server with an in-memory core-banking stub.
 
@@ -23,8 +23,8 @@ Login: `teller01` / `Teller#2019`. Seed CIFs `100000001`, `100000002`.
 * `src/app/app.module.js`, `app.routes.js` — root module, ui-router states, auth guard.
 * `src/styles/teller.css` — theme on top of Bootstrap 3.
 * `mock-server/` — `server.js` (static + stub/proxy), `api.js` (routes), `store.js` (state), `seed.js` (data).
-* `test/unit/*.spec.js` — Jasmine specs. Tests load feature modules (e.g. `nbTeller.transfers`), never the
-  root `nbTeller` module, so no templates or routes are needed.
+* `test/unit/*.spec.js` — Jasmine specs. Tests load feature modules (e.g. `boaTeller.transfers`), never the
+  root `boaTeller` module, so no templates or routes are needed.
 
 ## Conventions
 

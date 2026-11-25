@@ -1,5 +1,5 @@
 (function () {
   'use strict';
 
-  angular.module('nbTeller.transactions', ['ui.router', 'nbTeller.core']);
+  angular.module('boaTeller.transactions', ['ui.router', 'boaTeller.core']);
 })();

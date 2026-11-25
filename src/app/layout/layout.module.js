@@ -1,5 +1,5 @@
 (function () {
   'use strict';
 
-  angular.module('nbTeller.layout', ['ui.router', 'nbTeller.core']);
+  angular.module('boaTeller.layout', ['ui.router', 'boaTeller.core']);
 })();

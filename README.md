@@ -1,11 +1,11 @@
-# nb-teller-web — Branch Teller Console
+# boa-teller-web — Branch Teller Console
 
-Northbridge Federal Bank's branch teller console. Tellers use it to look up customers by CIF, review
+Bank of America's branch teller console. Tellers use it to look up customers by CIF, review
 accounts and transaction history, search posted transactions, place holds and post internal book
 transfers. It is a single-page AngularJS 1.5 application that talks directly to the **core-banking**
-service of the Northbridge Core Platform over HTTP Basic.
+service of the Bank of America Core Platform over HTTP Basic.
 
-Owner: Branch Technology (branch-tech@northbridge.example) · Runbook: Branch Ops wiki › Teller Console
+Owner: Branch Technology (branch-tech@bofa.com) · Runbook: Branch Ops wiki › Teller Console
 
 ## Quick start
 
@@ -44,13 +44,13 @@ browser ── dist/index.html, js/vendor.js, js/app.js ──┐
 
   | folder | module | screens |
   |---|---|---|
-  | `core/` | `nbTeller.core` | `AuthService`, `authInterceptor`, `CoreBankingService`, filters, `nb-alert` |
-  | `login/` | `nbTeller.login` | sign-in |
-  | `layout/` | `nbTeller.layout` | navbar shell, quick account jump |
-  | `customers/` | `nbTeller.customers` | CIF lookup, customer profile and accounts |
-  | `accounts/` | `nbTeller.accounts` | balances, transaction history, place hold |
-  | `transactions/` | `nbTeller.transactions` | free-text transaction search |
-  | `transfers/` | `nbTeller.transfers` | book transfer (details → review → receipt) |
+  | `core/` | `boaTeller.core` | `AuthService`, `authInterceptor`, `CoreBankingService`, filters, `boa-alert` |
+  | `login/` | `boaTeller.login` | sign-in |
+  | `layout/` | `boaTeller.layout` | navbar shell, quick account jump |
+  | `customers/` | `boaTeller.customers` | CIF lookup, customer profile and accounts |
+  | `accounts/` | `boaTeller.accounts` | balances, transaction history, place hold |
+  | `transactions/` | `boaTeller.transactions` | free-text transaction search |
+  | `transfers/` | `boaTeller.transfers` | book transfer (details → review → receipt) |
 
 * **Build:** gulp 4 concatenates vendor libraries into `dist/js/vendor.js` and the app (plus HTML
   templates via `gulp-angular-templatecache`) into `dist/js/app.js`. No transpiler, no module bundler.
@@ -118,7 +118,7 @@ needed on core-banking.
 ## CI
 
 `Jenkinsfile` runs on the Branch Technology Jenkins (`linux-node` agents, Node 8.11 tool): install,
-lint, unit tests, build, and on `main` archives `dist/` as `nb-teller-web-<build>.tgz` for the branch
+lint, unit tests, build, and on `main` archives `dist/` as `boa-teller-web-<build>.tgz` for the branch
 web tier.
 
 ## Further reading

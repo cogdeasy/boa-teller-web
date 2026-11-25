@@ -2,26 +2,26 @@
   <li><a ui-sref="console.lookup">Customers</a></li>
   <li class="active">CIF {{customer.cif}}</li>
 </ol>
-<div nb-alert="error"></div>
+<div boa-alert="error"></div>
 <div ng-if="loading" class="text-muted">Loading customer&hellip;</div>
 <div ng-if="customer">
-  <div class="panel panel-default nb-customer">
+  <div class="panel panel-default boa-customer">
     <div class="panel-body">
       <div class="row">
         <div class="col-sm-6">
           <h2>{{customer.firstName}} {{customer.lastName}}</h2>
-          <p class="text-muted">CIF <span class="nb-mono">{{customer.cif}}</span> &middot; {{customer.email}}</p>
+          <p class="text-muted">CIF <span class="boa-mono">{{customer.cif}}</span> &middot; {{customer.email}}</p>
         </div>
         <div class="col-sm-6 text-right">
-          <span class="label label-primary nb-label-lg">{{customer.segment}}</span>
-          <span class="label nb-label-lg" ng-class="kycClass(customer.kycStatus)">KYC {{customer.kycStatus}}</span>
-          <div class="nb-totals">
+          <span class="label label-primary boa-label-lg">{{customer.segment}}</span>
+          <span class="label boa-label-lg" ng-class="kycClass(customer.kycStatus)">KYC {{customer.kycStatus}}</span>
+          <div class="boa-totals">
             <div><small>Total ledger</small><strong>{{totals.ledger | money}}</strong></div>
             <div><small>Total available</small><strong>{{totals.available | money}}</strong></div>
           </div>
         </div>
       </div>
-      <div class="alert alert-warning nb-inline-alert" ng-if="customer.kycStatus !== 'VERIFIED'">
+      <div class="alert alert-warning boa-inline-alert" ng-if="customer.kycStatus !== 'VERIFIED'">
         <span class="glyphicon glyphicon-warning-sign"></span>
         KYC review is due. Verify two forms of ID before any cash withdrawal or transfer over $3,000.00.
       </div>
@@ -30,7 +30,7 @@
 
   <div class="panel panel-default">
     <div class="panel-heading"><h3 class="panel-title">Accounts</h3></div>
-    <table class="table table-hover nb-table">
+    <table class="table table-hover boa-table">
       <thead>
         <tr>
           <th>Account</th><th>Product</th><th>Status</th><th>Opened</th>
@@ -39,14 +39,14 @@
       </thead>
       <tbody>
         <tr ng-repeat="a in accounts">
-          <td><a ui-sref="console.account({accountNumber: a.accountNumber})" class="nb-mono">{{a.maskedNumber}}</a>
+          <td><a ui-sref="console.account({accountNumber: a.accountNumber})" class="boa-mono">{{a.maskedNumber}}</a>
             <div class="small text-muted">{{a.nickname}}</div></td>
           <td>{{a.productCode}}</td>
           <td><span class="label" ng-class="a.status === 'OPEN' ? 'label-success' : 'label-default'">{{a.status}}</span></td>
           <td>{{a.openedOn | nyTime:'MM/DD/YYYY'}}</td>
-          <td class="text-right nb-mono">{{a.ledgerBalance | money}}</td>
-          <td class="text-right nb-mono" ng-class="{'text-warning': a.holdAmount !== '0.00'}">{{a.holdAmount | money}}</td>
-          <td class="text-right nb-mono"><strong>{{a.availableBalance | money}}</strong></td>
+          <td class="text-right boa-mono">{{a.ledgerBalance | money}}</td>
+          <td class="text-right boa-mono" ng-class="{'text-warning': a.holdAmount !== '0.00'}">{{a.holdAmount | money}}</td>
+          <td class="text-right boa-mono"><strong>{{a.availableBalance | money}}</strong></td>
           <td class="text-right">
             <a class="btn btn-default btn-xs" ui-sref="console.account({accountNumber: a.accountNumber})">View</a>
             <a class="btn btn-default btn-xs" ui-sref="console.transfer({fromAccount: a.accountNumber})">Transfer</a>

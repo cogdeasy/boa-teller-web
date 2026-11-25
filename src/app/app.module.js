@@ -1,15 +1,15 @@
 (function () {
   'use strict';
 
-  angular.module('nbTeller', [
+  angular.module('boaTeller', [
     'ui.router',
-    'nbTeller.templates',
-    'nbTeller.core',
-    'nbTeller.layout',
-    'nbTeller.login',
-    'nbTeller.customers',
-    'nbTeller.accounts',
-    'nbTeller.transactions',
-    'nbTeller.transfers'
+    'boaTeller.templates',
+    'boaTeller.core',
+    'boaTeller.layout',
+    'boaTeller.login',
+    'boaTeller.customers',
+    'boaTeller.accounts',
+    'boaTeller.transactions',
+    'boaTeller.transfers'
   ]);
 })();

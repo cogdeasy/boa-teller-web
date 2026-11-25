@@ -3,7 +3,7 @@ describe('AuthService', function () {
 
   var AuthService, $httpBackend, $window;
 
-  beforeEach(module('nbTeller.core'));
+  beforeEach(module('boaTeller.core'));
   beforeEach(inject(function (_AuthService_, _$httpBackend_, _$window_) {
     AuthService = _AuthService_;
     $httpBackend = _$httpBackend_;

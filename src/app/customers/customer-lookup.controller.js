@@ -1,12 +1,12 @@
 (function () {
   'use strict';
 
-  angular.module('nbTeller.customers')
+  angular.module('boaTeller.customers')
     .controller('CustomerLookupController', CustomerLookupController);
 
   CustomerLookupController.$inject = ['$scope', '$state', '$window', 'CoreBankingService', 'ApiError'];
   function CustomerLookupController($scope, $state, $window, CoreBankingService, ApiError) {
-    var RECENT_KEY = 'nb.teller.recentCustomers';
+    var RECENT_KEY = 'boa.teller.recentCustomers';
 
     $scope.form = { cif: '' };
     $scope.error = null;

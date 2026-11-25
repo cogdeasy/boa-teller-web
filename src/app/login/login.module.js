@@ -1,5 +1,5 @@
 (function () {
   'use strict';
 
-  angular.module('nbTeller.login', ['ui.router', 'nbTeller.core']);
+  angular.module('boaTeller.login', ['ui.router', 'boaTeller.core']);
 })();

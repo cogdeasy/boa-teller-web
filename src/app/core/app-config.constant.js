@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('nbTeller.core')
+  angular.module('boaTeller.core')
     .constant('APP_CONFIG', {
       apiBase: '/api/v1',
       branchCode: '104',

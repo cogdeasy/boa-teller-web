@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('nbTeller.transfers')
+  angular.module('boaTeller.transfers')
     .controller('TransferController', TransferController);
 
   TransferController.$inject = ['$scope', '$stateParams', '$log', 'CoreBankingService', 'AccountNumbers', 'ApiError', 'TRANSFER_ERRORS'];

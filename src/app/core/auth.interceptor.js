@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('nbTeller.core')
+  angular.module('boaTeller.core')
     .factory('authInterceptor', authInterceptor);
 
   authInterceptor.$inject = ['$injector', '$q', '$rootScope'];

@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('nbTeller.layout')
+  angular.module('boaTeller.layout')
     .controller('ShellController', ShellController);
 
   ShellController.$inject = ['$scope', '$state', 'AuthService', 'APP_CONFIG'];

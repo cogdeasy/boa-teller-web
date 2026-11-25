@@ -1,4 +1,4 @@
-// Branch Technology shared pipeline - nb-teller-web
+// Branch Technology shared pipeline - boa-teller-web
 pipeline {
   agent { label 'linux-node' }
   tools { nodejs 'node-8.11' }
@@ -8,7 +8,7 @@ pipeline {
   }
   environment {
     CHROME_BIN = '/usr/bin/chromium-browser'
-    NPM_CONFIG_REGISTRY = 'https://artifactory.northbridge.example/api/npm/npm-virtual/'
+    NPM_CONFIG_REGISTRY = 'https://artifactory.bofa.com/api/npm/npm-virtual/'
   }
   stages {
     stage('Install') {
@@ -26,14 +26,14 @@ pipeline {
     stage('Package') {
       when { branch 'main' }
       steps {
-        sh 'tar -czf nb-teller-web-${BUILD_NUMBER}.tgz -C dist .'
-        archiveArtifacts artifacts: 'nb-teller-web-*.tgz', fingerprint: true
+        sh 'tar -czf boa-teller-web-${BUILD_NUMBER}.tgz -C dist .'
+        archiveArtifacts artifacts: 'boa-teller-web-*.tgz', fingerprint: true
       }
     }
   }
   post {
     failure {
-      mail to: 'branch-tech@northbridge.example', subject: "nb-teller-web #${BUILD_NUMBER} failed", body: "${BUILD_URL}"
+      mail to: 'branch-tech@bofa.com', subject: "boa-teller-web #${BUILD_NUMBER} failed", body: "${BUILD_URL}"
     }
   }
 }

@@ -3,7 +3,7 @@ describe('AccountNumbers', function () {
 
   var AccountNumbers;
 
-  beforeEach(module('nbTeller.core'));
+  beforeEach(module('boaTeller.core'));
   beforeEach(inject(function (_AccountNumbers_) {
     AccountNumbers = _AccountNumbers_;
   }));

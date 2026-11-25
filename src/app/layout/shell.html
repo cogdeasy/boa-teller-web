@@ -1,8 +1,8 @@
-<nav class="navbar navbar-inverse navbar-static-top nb-navbar">
+<nav class="navbar navbar-inverse navbar-static-top boa-navbar">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" ui-sref="console.lookup">
-        <span class="nb-mark">NB</span> Northbridge Federal Bank <small>Teller Console</small>
+        <span class="boa-mark">BofA</span> Bank of America <small>Teller Console</small>
       </a>
     </div>
     <ul class="nav navbar-nav">
@@ -26,7 +26,7 @@
       </div>
     </form>
     <ul class="nav navbar-nav navbar-right">
-      <li class="navbar-text nb-meta">Branch {{branch}} &middot; {{businessDate}}</li>
+      <li class="navbar-text boa-meta">Branch {{branch}} &middot; {{businessDate}}</li>
       <li class="dropdown">
         <a href class="dropdown-toggle" data-toggle="dropdown">
           <span class="glyphicon glyphicon-lock"></span> {{session.username}} <span class="label label-info">{{session.role}}</span>
@@ -39,7 +39,7 @@
     </ul>
   </div>
 </nav>
-<div class="container-fluid nb-content" ui-view></div>
-<footer class="nb-footer">
-  Northbridge Federal Bank &middot; Branch Operations &middot; For internal use by authorised staff only. Activity is monitored.
+<div class="container-fluid boa-content" ui-view></div>
+<footer class="boa-footer">
+  Bank of America &middot; Branch Operations &middot; For internal use by authorised staff only. Activity is monitored.
 </footer>

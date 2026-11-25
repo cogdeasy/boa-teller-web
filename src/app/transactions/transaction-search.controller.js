@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('nbTeller.transactions')
+  angular.module('boaTeller.transactions')
     .controller('TransactionSearchController', TransactionSearchController);
 
   TransactionSearchController.$inject = ['$scope', '$state', '$stateParams', 'CoreBankingService', 'ApiError'];

@@ -1,10 +1,10 @@
 {
-  "name": "nb-teller-web",
+  "name": "boa-teller-web",
   "version": "2.4.1",
-  "description": "Northbridge Federal Bank branch teller console",
+  "description": "Bank of America branch teller console",
   "private": true,
   "license": "UNLICENSED",
-  "author": "Northbridge Branch Technology <branch-tech@northbridge.example>",
+  "author": "Bank of America Branch Technology <branch-tech@bofa.com>",
   "main": "mock-server/server.js",
   "engines": {
     "node": ">=8"

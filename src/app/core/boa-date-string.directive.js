@@ -5,10 +5,10 @@
    * Lets <input type="date"> bind to a "yyyy-MM-dd" string model (the contract's date format)
    * instead of a Date object.
    */
-  angular.module('nbTeller.core')
-    .directive('nbDateString', nbDateString);
+  angular.module('boaTeller.core')
+    .directive('boaDateString', boaDateString);
 
-  function nbDateString() {
+  function boaDateString() {
     return {
       require: 'ngModel',
       priority: 1,

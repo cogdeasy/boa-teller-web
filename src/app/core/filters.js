@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('nbTeller.core')
+  angular.module('boaTeller.core')
     .filter('maskAccount', maskAccount)
     .filter('money', money)
     .filter('highlight', highlight)

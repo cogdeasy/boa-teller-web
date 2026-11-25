@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('nbTeller')
+  angular.module('boaTeller')
     .config(routes)
     .run(guard);
 
