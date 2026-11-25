@@ -21,8 +21,11 @@ var checkTransferLimits = (function () {
   'use strict';
 
   // Per-transfer limit by destination product; mirrors core-banking's product_limit table.
-  // Card payments (transfers to CC-VISA) were added to the teller console without a matching entry here.
-  var TRANSFER_LIMITS = { 'DDA-CHK': { perTransfer: 1000000 }, 'DDA-SAV': { perTransfer: 2500000 } }; // cents, mirrors core-banking
+  var TRANSFER_LIMITS = { // cents
+    'DDA-CHK': { perTransfer: 1000000 },
+    'DDA-SAV': { perTransfer: 2500000 },
+    'CC-VISA': { perTransfer: 1500000 }
+  };
 
   function checkTransferLimits(to, amount) {
     var limit = TRANSFER_LIMITS[to.productCode];
