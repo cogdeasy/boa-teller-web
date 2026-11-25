@@ -29,6 +29,8 @@ var ACCOUNTS = [
     status: 'OPEN', ledger: 481233, hold: 10000, openedOn: '2014-03-11' },
   { accountNumber: '104000123463', cif: '100000001', productCode: 'DDA-SAV', nickname: 'Advantage Savings',
     status: 'OPEN', ledger: 2215000, hold: 0, openedOn: '2014-03-11' },
+  { accountNumber: '440000528719', cif: '100000001', productCode: 'CC-VISA', nickname: 'Customized Cash Rewards Visa',
+    status: 'OPEN', ledger: -128456, hold: 0, openedOn: '2017-06-19' },
   { accountNumber: '211000048218', cif: '100000002', productCode: 'DDA-CHK', nickname: 'Everyday Checking',
     status: 'OPEN', ledger: 104512, hold: 0, openedOn: '2019-07-22' },
   { accountNumber: '211000048226', cif: '100000002', productCode: 'DDA-SAV', nickname: 'Everyday Savings',

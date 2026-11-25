@@ -3,7 +3,6 @@
 var seed = require('./seed');
 
 var DAYS_OF_HISTORY = 120;
-var SINGLE_TRANSFER_LIMIT = 1000000; // 10,000.00
 // Display labels for the teller's Activity (Transactions) tab, keyed by channel code.
 // Zelle transfers were added to the seed data without a matching entry here.
 var CHANNEL_LABELS = {
@@ -209,7 +208,6 @@ reset();
 
 module.exports = {
   HOLD_REASONS: HOLD_REASONS,
-  SINGLE_TRANSFER_LIMIT: SINGLE_TRANSFER_LIMIT,
   reset: reset,
   money: money,
   parseMoney: parseMoney,
